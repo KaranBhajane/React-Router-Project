@@ -72,6 +72,8 @@ function User() {
                 <button disabled={page >=2? true : false} className="w-fit border bg-emerald-400 px-2 rounded-md text-black text-l font-semibold" onClick={() => handlePage(+1)}>Next</button>
                 {console.log(page)}
             </div>
+            {console.log('first commit')
+            }
         </div>
 
     </>
