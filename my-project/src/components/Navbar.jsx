@@ -4,10 +4,8 @@ import { AuthContext } from "../context/AuthContextProv";
 
 function Navbar() {
   let { IsAutth, logout, login } = useContext(AuthContext);
-  let data = !IsAutth ? " You are logout" : " you are login";
-  // let log=login?'loggedIn':"Signup"
   let navigate = useNavigate();
-
+  let data;
   const links = [
     { to: "./", title: "Home" },
     { to: "./User", title: "User" },
@@ -16,17 +14,16 @@ function Navbar() {
     { to: "./Login", title: data },
   ];
   return (
-    <div className="w-full ">
-      <div className="flex justify-evenly items-center border w-full h-[60px] m-auto bg-gray-300 text-emerald-800 text-xl  ">
-        
+    <div className="w-full  flex">
+      <div className="flex justify-around items-center border border-black   w-full h-[60px] m-auto bg-gray-300 text-emerald-800 text-xl  ">
         {links.map((el, ind) => {
           return (
-            <NavLink className={({isActive})=>{
-              if(isActive){
-                return 'font-bold underline'
-              }
-            }}
-     
+            <NavLink
+              className={({ isActive }) => {
+                if (isActive) {
+                  return "font-bold underline";
+                }
+              }}
               key={ind}
               to={el.to}
             >
@@ -35,20 +32,20 @@ function Navbar() {
           );
         })}
 
-        <div className="flex gap-10 items-center w-[200px] ">
-            
-        <button
-          className=" rounded-md text-white bg-emerald-500 px-2 hover:underline hover:text-black"
-          onClick={() => {
+        <div className=" flex gap-20 items-center  relative right-36">
+          <button
+            className=" rounded-md text-white bg-emerald-500 px-2 hover:underline hover:text-black"
+            onClick={() => {
+              logout();
+              navigate("/login");
+              alert("Logout-Successfully!");
+            }}>Logout</button>
+          <div className=" ">
+          {data = IsAutth ? <p className="font-semibold text-[16px] w-fit text-black">You are LoggedIn</p> : <p  className="font-semibold text-[16px] w-fit text-black">You are Logged-Out</p>
+          }
+          </div>
 
-            login();
-            navigate('/user')
-            alert("Logged-In Suceescully!");
-          }}
-        >
-          Login
-        </button>
-        <button
+          {/* <button
           className="rounded-md text-white bg-emerald-500 px-2 hover:underline hover:text-black"
           
           onClick={() => {
@@ -60,7 +57,7 @@ function Navbar() {
         }
         >
           Logout
-        </button>
+        </button> */}
         </div>
       </div>
     </div>

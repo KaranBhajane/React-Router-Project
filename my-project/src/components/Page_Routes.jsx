@@ -14,14 +14,14 @@ function Page_Routes() {
   return (
     <Routes>
         <Route path='/' element={
-          // <RouterLock>
+           <RouterLock>
             <Home/>
-          // </RouterLock>
+          </RouterLock>
           }/>
         <Route path='/User' element={
-          // <RouterLock>
+          <RouterLock>
             <User/>
-          // </RouterLock>
+           </RouterLock>
           }/>
         <Route path='/About' element={<About/>}/>
         <Route path='/Contact' element={<Contact/>}/>

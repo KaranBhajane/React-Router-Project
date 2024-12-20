@@ -7,7 +7,9 @@ function Login() {
 const [email, setEmail] = useState('')
 const [pass, setPass] = useState('')
 const {user}=useContext(AuthContext)
-const [login, setLogin] = useState(false)
+const [log, setLogin] = useState(false)
+
+let {isAuth,login,logout}=useContext(AuthContext)
 let navigate=useNavigate()
 
 
@@ -16,8 +18,9 @@ function checker()
   let check=false
   user.map((el)=>{
     if(el.email===email &&el.password ===pass){
-      navigate("/user")
       check=true
+      login()
+      navigate("/user")
       setLogin(true)
       setEmail('')
       setPass('') 
@@ -29,6 +32,8 @@ function checker()
   {
     alert("Invalid crediantials or SignUp Again!  ")
     setLogin(false)
+    logout()
+    // navigate('login')
     setEmail('')
     setPass('')
 

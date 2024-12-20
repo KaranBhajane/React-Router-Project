@@ -17,6 +17,8 @@ function AuthContextFun({ children }) {
         setIsAutth(false)
     }
 
+    
+
 
     async function handleAuth() {
         let data = await fetch('http://localhost:3000/User');
